@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RemedyComponent } from './remedy.component';
-
+import { CreateRemedyComponent } from './create/create.component';
 
 
 @NgModule({
   declarations: [
-    RemedyComponent
+    RemedyComponent,
+    CreateRemedyComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    
   ],
   exports: [
-    RemedyComponent
+    CreateRemedyComponent
   ]
 })
 export class RemedyModule { }

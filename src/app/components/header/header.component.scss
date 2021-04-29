@@ -1,0 +1,11 @@
+nav{
+    & .navbar-collapse{
+        & .navbar-nav{ 
+            & .nav-item{
+                & .nav-link{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

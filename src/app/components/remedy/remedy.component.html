@@ -1,3 +1,42 @@
 <div class="justify-content-end row">
     <button class="btn btn-primary">Adicionar</button>
 </div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Posologia
+            </th>
+            <th>
+                Dias da Semana
+            </th>
+            <th>
+                Ativo
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of remedyList">
+            <td>
+                {{item.name}}
+            </td>
+            <td>
+                {{item.posology}}
+            </td>
+            <td>
+                {{item.daysOfWeek}}
+            </td>
+            <td *ngIf="item.isActived">
+                Ativo
+            </td>
+            <td *ngIf="!item.isActived">
+                Inativo
+            </td>
+        </tr>
+    </tbody>
+</table>

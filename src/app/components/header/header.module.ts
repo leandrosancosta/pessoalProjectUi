@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { ImageComponent } from './image/image.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -11,7 +12,8 @@ import { ImageComponent } from './image/image.component';
     ImageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports:[
     HeaderComponent,

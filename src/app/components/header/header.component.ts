@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'lsc-header',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  navigateTo(): void{
+    this.router.navigate(['remedy'])
+  }
+
+  activedClass(): void{
+    
   }
 
 }
