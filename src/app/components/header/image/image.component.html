@@ -1,0 +1,29 @@
+<span class="nav-link" data-toggle="modal" data-target="#imagemModal">Image2B64</span>
+
+<!-- Modal -->
+<div class="modal fade" id="imagemModal" tabindex="-1" role="dialog" aria-labelledby="imagemModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="block">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="row">
+                    <input class="inputfile" name="file" id="file" type="file" (change)="fileChange($event)"
+                        accept="image/x-png,image/gif,image/jpeg">
+                    <label for="file" class="backup-label btn btn-dark">Escolher</label>
+                </div>
+                <div class="row" *ngIf="fileBase64">
+                    <div class="form-group col-11">
+                        <input type="text" class="form-control d-inline-block col-10" readonly [value]="fileBase64" id="base64">
+                        <button (click)="toClipboard()" class="btn btn-success mb-1 mx-2">Copiar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
