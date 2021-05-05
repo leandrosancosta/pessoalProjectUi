@@ -12,4 +12,8 @@ export class RemedyService {
   public getRemedies():Observable<Remedy[]>{
     return this.http.get<Remedy[]>('http://localhost:3000/remedy')
   }
+
+  public createRemedy():Observable<any>{
+    return this.http.post('http://localhost:3000/remedy',null)
+  }
 }

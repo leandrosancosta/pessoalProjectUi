@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-declare var $: any;
 
 @Component({
   selector: 'lsc-header',

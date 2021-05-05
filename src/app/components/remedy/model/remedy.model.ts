@@ -6,9 +6,9 @@ export class Remedy {
     public daysOfWeek: string;
     public schedules: string;
     public isActived: boolean;
-}
 
+    constructor(){
+        this.quantityDay = 0
+    }
 
-export class RemedyList{
-    public remedy: Remedy[]
 }

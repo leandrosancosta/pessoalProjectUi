@@ -4,9 +4,9 @@ import { CreateRemedyComponent } from './components/remedy/create/create.compone
 import { RemedyComponent } from './components/remedy/remedy.component';
 
 const routes: Routes = [
-  {path:'remedy', component: RemedyComponent, children:[
-    { path: 'create', component: CreateRemedyComponent, pathMatch: 'full' }
-  ]}
+  {path:'remedy', component: RemedyComponent},
+  {path:'remedy/create', component: CreateRemedyComponent},
+
 ];
 
 @NgModule({

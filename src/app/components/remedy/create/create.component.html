@@ -1,1 +1,49 @@
-<p>create works!</p>
+<form #redForm="ngForm" (ngSubmit)="onSubmit(redForm)" (keydown.enter)="$event.preventDefault()" novalidate>
+    <div class="form-row">
+        <div class="form-group col-6">
+            <label for="name">
+                Nome de medicamento
+            </label>
+            <input type="text" name="name" [(ngModel)]="remedyForm.name" class="form-control">
+        </div>
+        <div class="form-group col-6">
+            <label for="posology">
+                Posologia
+            </label>
+            <input type="text" name="posology" [(ngModel)]="remedyForm.posology" class="form-control">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group custom-col-1-5">
+            <label for="qtd">Vezes por Dia</label>
+            <input type="number" name="qtd" [(ngModel)]="remedyForm.quantityDay" class="form-control" min="0">
+        </div>
+        <div class="form-group col-4">
+            <label>Dias da Semana</label>
+            <div class="form-control col-12"> <span value=0 id="dom" class="day">DOM</span> | <span value=1 id="seg" class="day">SEG</span> | <span
+                value=2 id="ter" class="day">TER</span> | <span value=3 id="qua"  class="day">QUA</span> | <span value=4 id="qui" class="day">QUI</span> | <span value=5 id="sex"
+                    class="day">SEX</span> | <span value=6 id="sab" class="day">SAB</span></div>
+        </div>
+        <div class="form-group col-4">
+            <label for="schedules">Horários</label>
+            <div class="d-block">
+                <input type="text" class="form-control col-8 d-inline-block h-input" name="schedules" id="oi" readonly [(ngModel)]="schedules">
+                <button class="btn btn-primary h-btn" data-toggle="modal" data-target="#hourModal" [disabled]="disabledButton()" >+</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="modal fade" id="hourModal" tabindex="-1" role="dialog" aria-labelledby="hourModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-hour">
+            <div class="modal-body mx-auto">
+                <div class="d-block">
+                    <input type="time" id="hour" #hour class="d-inline-block">
+                    <button class="btn-hour" (click)="addHour(hour.value)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

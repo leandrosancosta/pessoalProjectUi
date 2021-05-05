@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Remedy, RemedyList } from './model/remedy.model';
+import { Router } from '@angular/router';
+import { Remedy } from './model/remedy.model';
 import { RemedyService } from './service/remedy.service';
 
 @Component({
@@ -11,10 +12,17 @@ export class RemedyComponent implements OnInit {
 
   remedyList: Remedy[]
 
-  constructor(private remedyService: RemedyService) { }
+  constructor(
+    private remedyService: RemedyService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.getAll();
+  }
+
+  goToCreate(): void{
+    this.router.navigate(['remedy/create'])
   }
 
 
