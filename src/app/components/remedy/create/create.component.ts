@@ -1,6 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Remedy } from '../model/remedy.model';
+import { RemedyService } from '../service/remedy.service';
 declare var $: any
 
 @Component({
@@ -14,21 +17,40 @@ export class CreateRemedyComponent implements OnInit {
   daysOfWeek: string[] = ['0', '0', '0', '0', '0', '0', '0']
   schedules: string[] = [];
 
-  constructor() {
+  constructor(private remedyService: RemedyService, private titleService: Title, private router: Router) {
     this.remedyForm = new Remedy();
-    
-   }
+  }
 
   ngOnInit(): void {
+    
 
   }
   onSubmit(remForm: NgForm) {
+    if(!remForm.valid)
+      return 
+
     this.remedyForm.daysOfWeek = this.daysOfWeek.toString().replace(/,/g, '');
+    this.remedyForm.schedules = this.schedules.toString();
+
+    this.remedyService.createRemedy(this.remedyForm).subscribe((data) => {
+      if(data.status == 200)
+      this.router.navigate(['/remedy']);
+        
+    })
+
   }
 
-  addHour(event){
-    if(event != null || event != undefined)
+  addHour(event) {
+    if (event != null && event != undefined && event != '')
       this.schedules.push(event);
+
+    if (this.schedules.length == this.remedyForm.quantityDay)
+      $("#hourModal").modal('hide')
+
+  }
+
+  teste(event) {
+    console.log(event);
   }
 
   @HostListener('click', ['$event'])
@@ -47,7 +69,7 @@ export class CreateRemedyComponent implements OnInit {
     this.daysOfWeek[index] = IsActived ? '0' : '1';
   }
 
-  disabledButton(): boolean{
+  disabledButton(): boolean {
     return !(this.remedyForm.quantityDay > 0 || (this.remedyForm.quantityDay > 0 && (this.remedyForm.quantityDay >= this.schedules.length)));
   }
 

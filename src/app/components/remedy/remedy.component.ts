@@ -10,7 +10,8 @@ import { RemedyService } from './service/remedy.service';
 })
 export class RemedyComponent implements OnInit {
 
-  remedyList: Remedy[]
+  remedyList: Remedy[];
+  loading: boolean = false;
 
   constructor(
     private remedyService: RemedyService,
@@ -27,6 +28,7 @@ export class RemedyComponent implements OnInit {
 
 
   getAll() {
+    this.loading = true;
     this.remedyService.getRemedies().subscribe((data)=>{
       this.remedyList = data;
       this.remedyList.map((item)=>{
@@ -65,6 +67,7 @@ export class RemedyComponent implements OnInit {
         }
 
         item.daysOfWeek = days;
+        this.loading = false;
       })
       
     })

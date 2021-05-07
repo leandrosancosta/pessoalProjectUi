@@ -10,10 +10,10 @@ export class RemedyService {
   constructor(private http: HttpClient) { }
 
   public getRemedies():Observable<Remedy[]>{
-    return this.http.get<Remedy[]>('http://localhost:3000/remedy')
+    return this.http.get<Remedy[]>('http://localhost:3001/remedy')
   }
 
-  public createRemedy():Observable<any>{
-    return this.http.post('http://localhost:3000/remedy',null)
+  public createRemedy(form: any):Observable<any>{
+    return this.http.post('http://localhost:3001/remedy/create',form)
   }
 }

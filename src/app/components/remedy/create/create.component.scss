@@ -17,6 +17,10 @@ form {
                 border-bottom-right-radius: 0rem;
                 border-bottom-left-radius : .25rem;
                 margin-bottom             : .3rem;
+
+                & .transparent {
+                    color: transparent;
+                }
             }
         }
 
@@ -42,7 +46,8 @@ form {
         border-bottom-left-radius : .25rem;
         border                    : 1px solid #050505;
         padding                   : 0.1rem 0.75rem;
-        &:focus-visible{
+
+        &:focus-visible {
             outline: none;
         }
     }

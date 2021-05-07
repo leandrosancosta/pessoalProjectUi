@@ -20,7 +20,15 @@
             </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="loading">
+        <tr>
+            <td colspan="4" class="bg-white text-center">
+                <i class="fas fa-circle-notch fa-spin text-danger h2"></i>
+            </td>
+        </tr>
+
+    </tbody>
+    <tbody *ngIf="!loading">
         <tr *ngFor="let item of remedyList">
             <td>
                 {{item.name}}

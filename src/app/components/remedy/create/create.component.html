@@ -2,9 +2,9 @@
     <div class="form-row">
         <div class="form-group col-6">
             <label for="name">
-                Nome de medicamento
+                Nome de medicamento <span class="text-danger">*</span>
             </label>
-            <input type="text" name="name" [(ngModel)]="remedyForm.name" class="form-control">
+            <input type="text" name="name" [(ngModel)]="remedyForm.name" class="form-control" required>
         </div>
         <div class="form-group col-6">
             <label for="posology">
@@ -27,11 +27,16 @@
         <div class="form-group col-4">
             <label for="schedules">Horários</label>
             <div class="d-block">
-                <input type="text" class="form-control col-8 d-inline-block h-input" name="schedules" id="oi" readonly [(ngModel)]="schedules">
-                <button class="btn btn-primary h-btn" data-toggle="modal" data-target="#hourModal" [disabled]="disabledButton()" >+</button>
+                <div class="form-control col-8 d-inline-block h-input" readonly (click)="teste($event)">
+                    <span *ngFor="let item of schedules" class="cursor-default"> {{item}} </span>
+                    <span *ngIf="schedules.length == 0" class="transparent">.</span>
+                </div>
+                <button class="btn btn-primary h-btn" type="button" data-toggle="modal" data-target="#hourModal" [disabled]="disabledButton()" >+</button>
             </div>
         </div>
     </div>
+
+    <button type="submit">Salvar</button>
 </form>
 
 <div class="modal fade" id="hourModal" tabindex="-1" role="dialog" aria-labelledby="hourModalLabel"
@@ -41,9 +46,10 @@
             <div class="modal-body mx-auto">
                 <div class="d-block">
                     <input type="time" id="hour" #hour class="d-inline-block">
-                    <button class="btn-hour" (click)="addHour(hour.value)">+</button>
+                    <button class="btn-hour" type="button" (click)="addHour(hour.value)">+</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
